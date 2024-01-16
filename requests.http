@@ -1,2 +1,30 @@
 ### health check
 GET http://localhost:3000
+
+### all coffees
+GET http://localhost:3000/coffees?limit=1&offset=10
+
+### get coffee by id
+GET http://localhost:3000/coffees/1
+
+### create a coffee
+POST  http://localhost:3000/coffees
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "Walter White",
+  "brand": "Heinsenberg",
+  "flavors": ["metanfetamina"]
+}
+
+### update a coffee
+PATCH http://localhost:3000/coffees/2
+Content-Type: application/json
+
+{
+  "name": "Jessy Pinkman"
+}
+
+### remove a coffee
+DELETE http://localhost:3000/coffees/2
