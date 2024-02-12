@@ -10,13 +10,13 @@ import {
   // HttpCode,
   // HttpStatus
 } from '@nestjs/common';
-import { CoffeesService } from './coffees.service';
+import { CoffeeService } from './coffee.service';
 import { CreateCoffeeDto, UpdateCoffeeDto } from './dto';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 
 @Controller('coffees')
-export class CoffeesController {
-  constructor(private readonly coffeeService: CoffeesService) {}
+export class CoffeeController {
+  constructor(private readonly coffeeService: CoffeeService) {}
 
   @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto) {
