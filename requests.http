@@ -1,5 +1,6 @@
 ### health check
 GET http://localhost:3000
+Authorization: 358u745klSKLJGJKERLIilurtj590894565A
 
 ### all coffees
 GET http://localhost:3000/coffees?limit=10

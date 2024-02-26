@@ -11,6 +11,9 @@ import {
   COFFEE_COUNTRIES,
   ASYNC_COFFEE_COUNTRIES,
 } from './coffee.contants';
+// import { ConfigService, ConfigType } from '@nestjs/config';
+import { ConfigType } from '@nestjs/config';
+import coffeeConfig from './config/coffee.config';
 
 @Injectable({ scope: Scope.TRANSIENT })
 export class CoffeeService {
@@ -24,11 +27,18 @@ export class CoffeeService {
     @Inject(COFFEE_COUNTRIES) private readonly coffeeCountries: string[],
     @Inject(ASYNC_COFFEE_COUNTRIES)
     private readonly asyncCoffeeCountries: string[],
+    @Inject(coffeeConfig.KEY)
+    private readonly coffeeConfiguration: ConfigType<typeof coffeeConfig>,
+    // private readonly configService: ConfigService,
   ) {
     // console.log(`Coffee Brands constant: ${this.coffeeBrands}`);
     // console.log(`Coffee Countries constant: ${this.coffeeCountries}`);
     // console.log(`Async Coffee Countries: ${this.asyncCoffeeCountries}`);
     console.log('CoffeService instanciated');
+
+    // const dbHost = this.configService.get('database.host');
+    // console.log(`dbHost: ${dbHost}`);
+    console.log(this.coffeeConfiguration.foo);
   }
 
   findAll(paginationQuery: PaginationQueryDto) {

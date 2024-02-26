@@ -10,6 +10,8 @@ import {
   COFFEE_COUNTRIES,
   ASYNC_COFFEE_COUNTRIES,
 } from './coffee.contants';
+import { ConfigModule } from '@nestjs/config';
+import coffeeConfig from './config/coffee.config';
 
 // custom provider -> value passed provide
 // useful to inject a constant value (external lib, or mock object)
@@ -27,7 +29,10 @@ export class CoffeeCountriesFactory {
 }
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Coffee, Flavor, Event])],
+  imports: [
+    TypeOrmModule.forFeature([Coffee, Flavor, Event]),
+    ConfigModule.forFeature(coffeeConfig),
+  ],
   controllers: [CoffeeController],
   providers: [
     // useClass provider: default
